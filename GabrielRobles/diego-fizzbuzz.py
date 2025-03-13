@@ -1,7 +1,10 @@
 x = int(input())
 
-strs = ["fizz", "buzz"]
-vals = [3, 5]
-for i in range(len(vals)):
-    if x % vals[i] == 0:
-        print(strs[i])
+d = {
+    "fizz" : 3,
+    "buzz" : 5
+}
+
+for key, value in d.items():
+    if x % value == 0:
+        print(key)
