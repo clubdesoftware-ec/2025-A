@@ -1,23 +1,34 @@
 x = int(input())
 
-def impementacion(x)
-    if x%3==0 and x%5==0:
-        print ("fizzbuzz") 
-    elif x%5==0: 
-        print("buzz")
-    elif x % 3 == 0:
-        print("fizz")
-    else: 
-        print("no es divisible para 3 ni para 5")
+### imprime fizz, divisible para 3
+### imprime buzz, divisible para 5
+### imprime fizzbuzz, divisible para los dos
+### Si no es divisible ni para 3 ni para 5, imprime el numero
+residuo3 = x % 3
 
-def implementacion(x):
-    strs = ["fizz", "buzz"]
-    vals = [3,5]
-    for i in range(len(vals)):
-        if x % vals[i]==0:
-            print(strs[i])
+divisible5 = (x % 5) == 0
 
-if __name__ == "__main__"
+# Entrada:
+# residuo es numero
+# 0 es numero
+# Salida:
+# T/F booleano
 
+if residuo3 == 0:
+    print("fizz")
+elif divisible5:
+    print("buzz")
+else:
+    print(x)
+    #otrocodigo
 
 x = int(input())
+
+output = ""
+
+if x % 3 == 0:
+    output += "fizz"
+if x % 5 == 0:
+    output += "buzz"
+
+print(output if output else x)
