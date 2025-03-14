@@ -23,7 +23,6 @@ def implementacion2 (x):
 
 ##alcance
 if __name__ == "___main___":
-
-x = int(input())
-implementacion2(x)
-implementacion1(x*3)
+      x = int(input())
+      implementacion2(x)
+      implementacion1(x*3)
