@@ -27,6 +27,11 @@ class Perro:
 
 dog = Perro()
 print(dog.nombre)
-dog.moverEnX()
+dog.moverEnX() # moverEnX(dog)
 print(dog.x)
+
+
+l = [32, 324 , 123]
+l.append(54)
+print(l)
 
