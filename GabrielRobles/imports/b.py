@@ -1,8 +1,9 @@
+class Ukulele:
+    def __init__(self):
+        pass
 
-def impl1():
-    print("impl1")
+    def play(self):
+        pass
 
-print("b out of main")
-if __name__ == "__main__":
-    print("b in if main")
-    impl1()
+def implementacion1():
+    print("implementacion1")
