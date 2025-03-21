@@ -26,6 +26,20 @@ costo_llantas = st.number_input("Costo de llantas", min_value=0.0, step=0.1)
 vida_util_llantas = st.number_input("Vida útil de las llantas (en kilómetros)", min_value=0.0, step=0.1)
 costo_mantenimiento = st.number_input("Costos de mantenimiento preventivo y correctivo", min_value=0.0, step=0.1)
 
+# Sección: Rendimiento del combustible por galón
+st.header("Rendimiento del combustible por galón")
+col1, col2 = st. columns([2, 1])
+
+with col1:
+    kilometros_dia = st.number_input("Kilómetros recorridos por día (KRdía)",
+                                      min_value=0.1, value=100.0, step=0.1)
+    
+    gasto_diario = st.number_input("Gasto diario en combustible ($) (GCDía)",
+                                    min_value=0.1, value=20.0, step=1.0)
+    
+
+    
+
 # Botón para calcular
 if st.button("Calcular"):
     st.write("Aquí se mostrarán los resultados del cálculo.")
