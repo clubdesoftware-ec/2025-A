@@ -23,12 +23,7 @@ if calculadora == "Costo de transporte":
     costo_matricula = st.number_input("Costo de matrícula", min_value=0.0, step=0.1)
     costo_inversion = st.number_input("Costo de inversión", min_value=0.0, step=0.1)
 
-
-elif calculadora == "Rendimiento de combustible":
-
-
-
-# Sección: Costos Variables
+    # Sección: Costos Variables
     st.header("Costos Variables")
     consumo_combustible = st.number_input("Consumo de combustible (litros/km o galones/km)", min_value=0.0, step=0.01)
     precio_combustible = st.number_input("Precio del combustible por litro o galón", min_value=0.0, step=0.01)
@@ -36,18 +31,12 @@ elif calculadora == "Rendimiento de combustible":
     vida_util_llantas = st.number_input("Vida útil de las llantas (en kilómetros)", min_value=0.0, step=0.1)
     costo_mantenimiento = st.number_input("Costos de mantenimiento preventivo y correctivo", min_value=0.0, step=0.1)
 
+elif calculadora == "Rendimiento de combustible":
+
     # Sección: Rendimiento del combustible por galón
     st.header("Rendimiento del combustible por galón")
     col1, col2 = st.columns([2, 1])
-
-    with col1:
-        precio_promedio_galon = rq.get_fuel_price()
-        with st.container():
-            st.write("### Precio Actual del Diesel")
-            st.write(f"{precio_promedio_galon}/galón")
-    with col2:
-        rendimiento_galon = st.number_input("Rendimiento del galón (Km/galón)",
-                                            min_value=0.1, value=5.0, step=0.1) 
+ 
     with col1:
         kilometros_dia = st.number_input("Kilómetros recorridos por día (KRdía)",
                                         min_value=0.1, value=100.0, step=0.1)
@@ -56,13 +45,23 @@ elif calculadora == "Rendimiento de combustible":
                                         min_value=0.1, value=20.0, step=1.0)
 
     with col2:
-        precio_promedio_galon = rq.get_fuel_price()  # Obtener el precio desde el módulo request
+        precio_promedio_galon = rq.get_fuel_price()
         with st.container():
             st.write("### Precio Actual del Diesel")
             st.write(f"{precio_promedio_galon}/galón")
 
     # Sección: Costo de Combustible por Km recorrido
     st.header("Costo de Combustible por Km recorrido")
+    col1, col2 = st.columns([2, 1])
+
+    with col1:
+        precio_promedio_galon = rq.get_fuel_price()
+        with st.container():
+                st.write("### Precio Actual del Diesel")
+                st.write(f"{precio_promedio_galon}/galón")
+    with col2:
+        rendimiento_galon = st.number_input("Rendimiento del galón (Km/galón)",
+                                                min_value=0.1, value=5.0, step=0.1) 
 
 # Botón para calcular
 if st.button("Calcular"):   
