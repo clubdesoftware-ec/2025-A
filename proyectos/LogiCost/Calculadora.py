@@ -23,10 +23,12 @@ if calculadora == "Costo de transporte":
     costo_matricula = st.number_input("Costo de matrícula", min_value=0.0, step=0.1)
     costo_inversion = st.number_input("Costo de inversión", min_value=0.0, step=0.1)
 
+
 elif calculadora == "Rendimiento de combustible":
 
 
-    # Sección: Costos Variables
+
+# Sección: Costos Variables
     st.header("Costos Variables")
     consumo_combustible = st.number_input("Consumo de combustible (litros/km o galones/km)", min_value=0.0, step=0.01)
     precio_combustible = st.number_input("Precio del combustible por litro o galón", min_value=0.0, step=0.01)
@@ -38,6 +40,14 @@ elif calculadora == "Rendimiento de combustible":
     st.header("Rendimiento del combustible por galón")
     col1, col2 = st.columns([2, 1])
 
+    with col1:
+        precio_promedio_galon = rq.get_fuel_price()
+        with st.container():
+            st.write("### Precio Actual del Diesel")
+            st.write(f"{precio_promedio_galon}/galón")
+    with col2:
+        rendimiento_galon = st.number_input("Rendimiento del galón (Km/galón)",
+                                            min_value=0.1, value=5.0, step=0.1) 
     with col1:
         kilometros_dia = st.number_input("Kilómetros recorridos por día (KRdía)",
                                         min_value=0.1, value=100.0, step=0.1)
