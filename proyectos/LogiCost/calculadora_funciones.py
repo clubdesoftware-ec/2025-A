@@ -1,7 +1,7 @@
 class funciones_calculadora:
-    def __init__(self):
-        self.valor1 = 0
-        self.valor2 = 0
+    def __init__(self, valor1, valor2):
+        self.valor1 = valor1
+        self.valor2 = valor2
 
     def suma(self):
         return self.valor1 + self.valor2
@@ -74,4 +74,3 @@ class funciones_calculadora:
         else:
             return lista[n//2]
 
-    def moda_lista(self, lista):

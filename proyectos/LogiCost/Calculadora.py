@@ -1,6 +1,6 @@
 import streamlit as st
 import Request as rq
-
+import calculadora_funciones as cf
 st.set_page_config(layout="wide")
 
 # Título de la aplicación
