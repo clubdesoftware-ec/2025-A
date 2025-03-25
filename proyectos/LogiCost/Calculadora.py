@@ -1,4 +1,7 @@
 import streamlit as st
+import Request as rq
+
+st.set_page_config(layout="wide")
 
 # Título de la aplicación
 st.title("Calculadora de Costos de Transporte")
@@ -36,10 +39,18 @@ with col1:
     
     gasto_diario = st.number_input("Gasto diario en combustible ($) (GCDía)",
                                     min_value=0.1, value=20.0, step=1.0)
-    
+with col2:
+    precio_promedio_galon = rq.get_fuel_price()
+    with st.container():
+        st.write("### Precio Actual del Diesel")
+        st.write(f"{precio_promedio_galon}/galón")
 
-    
+# Sección: Costo de Combustible por Km recorrido
+st.header("Costo de Combustible por Km recorrido")
+
+
+
 
 # Botón para calcular
-if st.button("Calcular"):
+if st.button("Calcular"):   
     st.write("Aquí se mostrarán los resultados del cálculo.")
