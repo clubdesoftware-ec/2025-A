@@ -47,8 +47,17 @@ with col2:
 
 # Sección: Costo de Combustible por Km recorrido
 st.header("Costo de Combustible por Km recorrido")
+col1, col2 = st.columns([2, 1])
 
+with col1:
+    precio_promedio_galon = rq.get_fuel_price()
+    with st.container():
+        st.write("### Precio Actual del Diesel")
+        st.write(f"{precio_promedio_galon}/galón")
 
+with col2:
+    rendimiento_galon = st.number_input("Rendimiento del galón (Km/galón)",
+                                        min_value=0.1, value=5.0, step=0.1)
 
 
 # Botón para calcular
