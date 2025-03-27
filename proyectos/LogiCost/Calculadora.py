@@ -1,6 +1,7 @@
 import streamlit as st
 import Request as rq  # Importa el módulo request que ya contiene la función
 import calculadora_funciones as cf
+
 st.set_page_config(layout="wide")
 
 # Título de la aplicación
@@ -91,4 +92,4 @@ elif calculadora == "Rendimiento de combustible":
 
 # Botón para calcular
 if st.button("Calcular"):   
-    st.write("Aquí se mostrarán los resultados del cálculo.")
+    st.write(cf.funciones_calculadora(kilometrosxdia=kilometros_dia, gdcombustible=gasto_diario, costo_neumatico=0, costo_preventivo=0, costo_correctivo=0).rendimiento_combustible())
