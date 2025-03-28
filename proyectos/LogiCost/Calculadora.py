@@ -9,13 +9,6 @@ st.title("Calculadora de Costos de Transporte")
 calculadora = st.selectbox("Seleccione el tipo de cálculo", ["Costo de transporte", "Rendimiento de combustible"])
 if calculadora == "Costo de transporte":
 
-    # Sección: Datos generales
-    st.header("Datos Generales")
-    viajes_diarios = st.number_input("Número de viajes diarios", min_value=0, step=1)
-    toneladas_por_viaje = st.number_input("Toneladas transportadas por viaje", min_value=0.0, step=0.1)
-    km_por_viaje = st.number_input("Kilómetros recorridos por viaje", min_value=0.0, step=0.1)
-    tarifa_por_tonelada = st.number_input("Tarifa actual por tonelada", min_value=0.0, step=0.1)
-
     # Sección: Costos Variables
     st.header("Costos Variables")
     gasto_combustible_anual = st.number_input("Gasto de combustible anual", min_value=0.0, step=0.1)
@@ -30,6 +23,12 @@ if calculadora == "Costo de transporte":
     depreciacion_anual = st.number_input("Depreciación anual", min_value=0.0, step=0.1)
     gastos_administrativos_anuales = st.number_input("Gastos administrativos anuales", min_value=0.0, step=0.1)
     costo_inversion = st.number_input("Costos de inversión", min_value=0.0, step=0.1)
+
+    if st.button("Calcular"):
+        st.write(cf.funciones_calculadora2(costo_combustible_año=gasto_combustible_anual, costo_neumatico_anual=gasto_neumaticos_anual,
+                                           gastos_mantenimiento_preventivo_anual=gasto_mantenimiento_preventivo_anual, gastos_mantenimiento_correctivo_anual=gasto_mantenimiento_correctivo_anual,
+                                           gasto_anual_mano_obra=gastos_anuales_mano_obra, gastos_legalizacion_anual=gastos_legalizacion_año, depreciacion_anual=depreciacion_anual,
+                                           gastos_administrativos_anuales=gastos_administrativos_anuales, costo_inversion=costo_inversion).costo_fijo_total())
 
 elif calculadora == "Rendimiento de combustible":
 
@@ -82,14 +81,11 @@ elif calculadora == "Rendimiento de combustible":
     with col1:
         kilometro_recorrido_anual = st.number_input("Kilómetros recorridos al año",
                                                     min_value=0.1, value=12000.0, step=0.1)
+
+    # Botón para calcular    
+    if st.button("Calcular"):   
+        st.write(cf.funciones_calculadora(kilometrosxdia=kilometros_dia, gdcombustible=gasto_diario, costo_neumatico=0, costo_preventivo=0, costo_correctivo=0).rendimiento_combustible())
         
-        
-        
-    
 
 
 
-
-# Botón para calcular
-if st.button("Calcular"):   
-    st.write(cf.funciones_calculadora(kilometrosxdia=kilometros_dia, gdcombustible=gasto_diario, costo_neumatico=0, costo_preventivo=0, costo_correctivo=0).rendimiento_combustible())

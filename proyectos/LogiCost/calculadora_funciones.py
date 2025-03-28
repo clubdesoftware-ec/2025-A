@@ -31,4 +31,21 @@ class funciones_calculadora:
     def costo_variable_anual(self):
         return self.costo_combustible_año() + self.costo_neumatico_anual() + self.costo_preventivo + self.costo_correctivo
 
+class funciones_calculadora2:
+    def __init__(self, gastos_mantenimiento_preventivo_anual, gastos_mantenimiento_correctivo_anual
+                , gasto_anual_mano_obra, gastos_legalizacion_anual, depreciacion_anual, gastos_administrativos_anuales, costo_inversion
+                , costo_neumatico_anual, costo_combustible_año):
+        self.gastos_mantenimiento_preventivo_anual = gastos_mantenimiento_preventivo_anual
+        self.gastos_mantenimiento_correctivo_anual = gastos_mantenimiento_correctivo_anual
+        self.gasto_anual_mano_obra = gasto_anual_mano_obra
+        self.gastos_legalizacion_anual = gastos_legalizacion_anual
+        self.depreciacion_anual = depreciacion_anual
+        self.gastos_administrativos_anuales = gastos_administrativos_anuales
+        self.costo_inversion = costo_inversion
+        self.costo_neumatico_anual = costo_neumatico_anual
+        self.costo_combustible_año = costo_combustible_año
+
+    def costo_fijo_total(self):
+        return self.gasto_anual_mano_obra + self.gastos_legalizacion_anual + self.depreciacion_anual + self.gastos_administrativos_anuales + self.costo_inversion\
+        + self.gastos_mantenimiento_preventivo_anual + self.gastos_mantenimiento_correctivo_anual + self.costo_neumatico_anual + self.costo_combustible_año\
    
