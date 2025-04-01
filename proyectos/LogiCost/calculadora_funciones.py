@@ -1,76 +1,51 @@
+import Request as rq
+
 class funciones_calculadora:
-    def __init__(self, valor1, valor2):
-        self.valor1 = valor1
-        self.valor2 = valor2
+    def __init__(self, kilometrosxdia, gdcombustible, costo_neumatico, costo_preventivo, costo_correctivo):
+        self.kilometroxdia = kilometrosxdia
+        self.gdcombustible = gdcombustible
+        self.precio_diesel = rq.get_fuel_price()
+        self.rendimiento_neumaticos = 47500
+        self.costo_neumatico = costo_neumatico
+        self.costo_preventivo = costo_preventivo
+        self.costo_correctivo = costo_correctivo
 
-    def suma(self):
-        return self.valor1 + self.valor2
+    def rendimiento_combustible(self):
+        return self.kilometroxdia / self.gdcombustible * self.precio_diesel
 
-    def resta(self):
-        return self.valor1 - self.valor2
+    def costoxkilometro(self):
+        return self.precio_diesel / self.rendimiento_combustible()
 
-    def multiplicacion(self):
-        return self.valor1 * self.valor2
+    def costo_combustible_año(self):
+        return self.costoxkilometro() * self.kilometroxdia * 365
 
-    def division(self):
-        return self.valor1 / self.valor2
+    def costo_total_neumaticos(self):
+        return self.costo_neumatico * self.numero_neumaticos
 
-    def potencia(self):
-        return self.valor1 ** self.valor2
+    def costo_neumaticoxkm(self):
+        return self.costo_total_neumaticos() / self.rendimiento_neumaticos
 
-    def raiz_cuadrada(self):
-        return self.valor1 ** 0.5
+    def costo_neumatico_anual(self):
+        return self.costo_neumaticoxkm() * self.kilometroxdia * 365
 
-    def raiz_cubica(self):
-        return self.valor1 ** (1/3)
+    def costo_variable_anual(self):
+        return self.costo_combustible_año() + self.costo_neumatico_anual() + self.costo_preventivo + self.costo_correctivo
 
-    def raiz_n(self):
-        return self.valor1 ** (1/self.valor2)
+class funciones_calculadora2:
+    def __init__(self, gastos_mantenimiento_preventivo_anual, gastos_mantenimiento_correctivo_anual
+                , gasto_anual_mano_obra, gastos_legalizacion_anual, depreciacion_anual, gastos_administrativos_anuales, costo_inversion
+                , costo_neumatico_anual, costo_combustible_año):
+        self.gastos_mantenimiento_preventivo_anual = gastos_mantenimiento_preventivo_anual
+        self.gastos_mantenimiento_correctivo_anual = gastos_mantenimiento_correctivo_anual
+        self.gasto_anual_mano_obra = gasto_anual_mano_obra
+        self.gastos_legalizacion_anual = gastos_legalizacion_anual
+        self.depreciacion_anual = depreciacion_anual
+        self.gastos_administrativos_anuales = gastos_administrativos_anuales
+        self.costo_inversion = costo_inversion
+        self.costo_neumatico_anual = costo_neumatico_anual
+        self.costo_combustible_año = costo_combustible_año
 
-    def porcentaje(self):
-        return (self.valor1 * self.valor2) / 100
-
-    def factorial(self):
-        if self.valor1 == 0:
-            return 1
-        else:
-            return self.valor1 * funciones_calculadora.factorial(self, self.valor1 - 1)
-
-    def fibonacci(self):
-        if self.valor1 == 0:
-            return 0
-        elif self.valor1 == 1:
-            return 1
-        else:
-            return funciones_calculadora.fibonacci(self, self.valor1 - 1) + funciones_calculadora.fibonacci(self, self.valor1 - 2)
-
-    def mcd(self):
-        a = self.valor1
-        b = self.valor2
-        while b != 0:
-            a, b = b, a % b
-        return a
-
-    def mcm(self):
-        a = self.valor1
-        b = self.valor2
-        return (a * b) / funciones_calculadora.mcd(self)
-
-    def suma_lista(self, lista):
-        suma = 0
-        for i in lista:
-            suma += i
-        return suma
-
-    def promedio_lista(self, lista):
-        suma = funciones_calculadora.suma_lista(self, lista)
-        return suma / len(lista)
-
-    def mediana_lista(self, lista):
-        lista.sort()
-        n = len(lista)
-        if n % 2 == 0:
-            return (lista[n//2 - 1] + lista[n//2]) / 2
-        else:
-            return lista[n//2]
-
+    def costo_fijo_total(self):
+        return self.gasto_anual_mano_obra + self.gastos_legalizacion_anual + self.depreciacion_anual + self.gastos_administrativos_anuales + self.costo_inversion\
+        + self.gastos_mantenimiento_preventivo_anual + self.gastos_mantenimiento_correctivo_anual + self.costo_neumatico_anual + self.costo_combustible_año\
+   
